@@ -4,6 +4,8 @@ from .config import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)
+
 mongo = PyMongo(app)
 
-from . import routes  #Import routes after app is created
+# Ensure the `mongo` instance is available globally if you're accessing it in other modules.
+from app import routes
